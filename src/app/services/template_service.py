@@ -15,7 +15,6 @@ class TemplateService:
     def _load_svg(self, filename):
         """Load SVG file content and return as string with currentColor support"""
         svg_path = os.path.join(os.path.dirname(__file__), f'../../../static/icons/{filename}.svg')
-        print(svg_path)
         try:
             with open(svg_path, 'r', encoding='utf-8') as f:
                 content = f.read()

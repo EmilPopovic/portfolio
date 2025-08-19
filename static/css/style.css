@@ -65,7 +65,7 @@
 body {
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    font-family: "Roboto", sans-serif;
+    font-family: "Roboto Sans", sans-serif;
     line-height: 1.6;
     margin: 0;
     padding: 0;

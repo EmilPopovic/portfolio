@@ -18,8 +18,6 @@ async def serve_frontend(
         'request': request,
         'latest_posts': latest_posts
     }
-    print(latest_posts)
-    print(request)
     return template_service.render_index(context, request)
 
 @router.get('/favicon.ico', include_in_schema=False, response_class=HTMLResponse)

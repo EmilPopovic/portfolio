@@ -2,7 +2,7 @@
 
 slug: "my-blog"
 file: "my-blog.md"
-title: "My Overengineered Little Blog Thing"
+title: "My Overengineered Little Blog"
 authors: ["Emil Popović"]
 created: "2025-08-17"
 updated: "2025-08-17"

@@ -7,7 +7,7 @@ authors: ["Emil Popović"]
 created: "2025-08-18"
 updated: "2025-08-18"
 description: "Summary thing"
-tags: ["meta", "test"]
+tags: []
 draft: false
 featured: false
 cover_image: "another-post/cover.webp"
