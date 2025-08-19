@@ -1,0 +1,198 @@
+.blog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.blog-title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.blog-description {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Search and Filter Controls */
+.blog-controls {
+    margin-bottom: 2rem;
+}
+
+.search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.search-group {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.search-input,
+.tag-filter {
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-family: inherit; /* Fix Firefox font inheritance */
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: border-color 0.2s;
+}
+
+.search-input {
+    flex: 1;
+    min-width: 200px;
+}
+
+.search-input:focus,
+.tag-filter:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--focus-ring);
+}
+
+.tag-filter {
+    min-width: 120px;
+}
+
+.search-button {
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-family: inherit; /* Fix Firefox font inheritance */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+}
+
+.search-button:hover {
+    background: var(--link-hover);
+}
+
+.clear-filters {
+    color: var(--link);
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 500;
+    align-self: flex-start;
+}
+
+.clear-filters:hover {
+    text-decoration: underline;
+}
+
+.filter-summary {
+    background: var(--muted);
+    padding: 1rem;
+    border-radius: 6px;
+    margin-bottom: 2rem;
+    border-left: 3px solid var(--accent);
+}
+
+.filter-summary p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+/* Section Styling */
+.featured-section,
+.series-section,
+.posts-section {
+    margin-bottom: 3rem;
+}
+
+.section-title {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Featured Posts - Simple List Style */
+.featured-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Series - Simple List Style */
+.series-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Posts List - Clean, Minimal Style */
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* Ensure all list items get separators */
+.posts-list > *:not(:last-child),
+.featured-grid > *:not(:last-child),
+.series-grid > *:not(:last-child) {
+    border-bottom: 1px solid var(--border);
+}
+
+.no-results {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--text-tertiary);
+}
+
+.no-results p {
+    margin: 0 0 1rem 0;
+    font-size: 1.125rem;
+}
+
+.search-form,
+.search-input,
+.tag-filter,
+.search-button {
+    box-sizing: border-box;
+    max-width: 100%;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .blog-title {
+        font-size: 2rem;
+    }
+    
+    .search-group {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .search-input,
+    .tag-filter,
+    .search-button {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .blog-header {
+        margin-bottom: 2rem;
+    }
+    
+    .section-title {
+        font-size: 1.25rem;
+    }
+}

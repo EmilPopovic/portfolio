@@ -1,0 +1,124 @@
+.series-header {
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.series-cover {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--muted);
+    overflow: hidden;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+}
+
+.series-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.series-info {
+    max-width: none;
+}
+
+.series-meta {
+    font-size: 0.875rem;
+    color: var(--text-tertiary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.series-meta .authors {
+    color: var(--text-secondary);
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-badge.status-completed {
+    background: var(--success);
+    color: white;
+}
+
+.status-badge.status-in-progress {
+    background: var(--warning);
+    color: white;
+}
+
+.status-badge.status-planned {
+    background: var(--muted);
+    color: var(--text-secondary);
+}
+
+.series-title {
+    margin: 0 0 1rem 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.series-description {
+    color: var(--text-secondary);
+    font-size: 1.125rem;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+}
+
+.series-stats {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.post-count {
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    font-weight: 500;
+}
+
+/* Series Posts Section */
+.series-posts h2 {
+    margin: 0 0 2rem 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.posts-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.no-posts {
+    text-align: center;
+    color: var(--text-tertiary);
+    font-style: italic;
+    padding: 2rem;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .series-title {
+        font-size: 2rem;
+    }
+    
+    .series-cover {
+        aspect-ratio: 16/8;
+    }
+}

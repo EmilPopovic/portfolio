@@ -1,0 +1,35 @@
+.icon {
+    display: inline-block;
+    vertical-align: middle;
+    color: inherit;
+    fill: currentColor;
+}
+
+.icon.small { width: 14px; height: 14px; }
+.icon.medium { width: 18px; height: 18px; }
+.icon.large { width: 24px; height: 24px; }
+
+/* Specific color overrides */
+.back-link .icon {
+    color: var(--link);
+}
+
+.back-link:hover .icon {
+    color: var(--link-hover);
+}
+
+.nav-link .icon {
+    color: var(--text-secondary);
+}
+
+.nav-link:hover .icon {
+    color: var(--text-primary);
+}
+
+.nav-link.disabled .icon {
+    color: var(--text-tertiary);
+}
+
+.theme-switch-btn .icon {
+    color: var(--text-primary);
+}

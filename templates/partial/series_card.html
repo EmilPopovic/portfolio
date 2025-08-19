@@ -1,0 +1,20 @@
+<a href="/blog/s/{{ series.slug }}" class="series-card-link">
+  <article class="series-card">
+    {% if series.cover_image %}
+      <div class="series-image">
+        <img src="{{ url_for('static', path='images/series/' + series.cover_image) }}" 
+             alt="{{ series.title }}" loading="lazy">
+      </div>
+    {% endif %}
+    
+    <div class="series-content">
+      <div class="series-meta">
+        <span class="post-count">{{ series.posts|length }} post{{ 's' if series.posts|length != 1 else '' }}</span>
+        <span class="status-badge status-{{ series.status }}">{{ series.status }}</span>
+      </div>
+      
+      <h3 class="series-title">{{ series.title }}</h3>
+      <p class="series-description">{{ series.description }}</p>
+    </div>
+  </article>
+</a>

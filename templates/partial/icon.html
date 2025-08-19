@@ -1,0 +1,5 @@
+{% macro icon(name, class="", size="24") %}
+<span class="icon {{ class }}" style="width: {{ size }}px; height: {{ size }}px; display: inline-block; vertical-align: middle;">
+  {{ load_svg(name) | safe }}
+</span>
+{% endmacro %}

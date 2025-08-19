@@ -1,0 +1,13 @@
+<section class="latest-posts">
+    <div class="container">
+        <h2>Latest Posts</h2>
+        <div class="posts-grid">
+            {% for post in latest_posts %}
+                {% include 'partial/post_card.html' %}
+            {% endfor %}
+        </div>
+        {% if latest_posts|length == 0 %}
+            <p class="no-posts">No posts available yet.</p>
+        {% endif %}
+    </div>
+</section>

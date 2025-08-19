@@ -1,0 +1,114 @@
+/* Series Navigation - More Subtle */
+.series-navigation {
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    margin: 0 0 2rem 0;
+    padding: 1.5rem 0;
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 2rem;
+    align-items: center;
+}
+
+.nav-link {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: var(--text-secondary);
+    padding: 0.5rem;
+    border-radius: 6px;
+    transition: color 0.2s;
+    background: transparent;
+    border: none;
+}
+
+.nav-link:not(.disabled):hover {
+    color: var(--text-primary);
+}
+
+.nav-link.prev {
+    text-align: left;
+}
+
+.nav-link.next {
+    text-align: right;
+    justify-self: end;
+}
+
+.nav-link.disabled {
+    color: var(--text-tertiary);
+    cursor: default;
+    opacity: 0.5;
+}
+
+.nav-link.disabled.next {
+    text-align: right;
+    justify-self: end;
+}
+
+.nav-direction {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--text-tertiary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-title {
+    font-size: 0.875rem;
+    font-weight: 400;
+    color: inherit;
+}
+
+.nav-center {
+    text-align: center;
+    justify-self: center;
+}
+
+.series-progress {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.25rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+}
+
+.series-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.series-title:hover {
+    color: var(--link);
+    text-decoration: underline;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .nav-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        text-align: center;
+    }
+    
+    .nav-link.prev,
+    .nav-link.next,
+    .nav-link.disabled.next {
+        text-align: center;
+        justify-self: center;
+    }
+    
+    .nav-center {
+        order: -1;
+    }
+}

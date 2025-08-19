@@ -1,0 +1,266 @@
+/* Post Card List Styles - Clean, Minimal Design */
+.post-card-list {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    border-radius: 0;
+    margin-bottom: 0;
+    overflow: visible;
+    transition: none;
+    display: grid;
+    grid-template-columns: auto 1fr 120px;
+    gap: 1.5rem;
+    align-items: start;
+    padding: 1rem 0;
+}
+
+.post-card-list:last-child {
+    border-bottom: none;
+}
+
+.post-card-list.featured {
+    position: relative;
+}
+
+.post-card-list.featured::before {
+    content: "FEATURED";
+    position: absolute;
+    top: 1rem;
+    left: 0;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* When there's a post number, adjust FEATURED position */
+.post-card-list.featured:has(.post-number)::before {
+    left: calc(60px + 1.5rem);
+}
+
+.post-card-list.featured .post-meta {
+    margin-top: 1rem;
+}
+
+/* Post number styling for series context - left column */
+.post-number {
+    width: 60px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-right: 1px solid var(--border);
+    grid-column: 1;
+}
+
+.post-number span {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+}
+
+/* When no post number, adjust grid */
+.post-card-list:not(:has(.post-number)) {
+    grid-template-columns: 1fr 120px;
+}
+
+.post-content-list {
+    flex: 1;
+    padding: 0;
+    min-width: 0;
+    grid-column: 2;
+}
+
+/* When no post number, content takes first column */
+.post-card-list:not(:has(.post-number)) .post-content-list {
+    grid-column: 1;
+}
+
+.post-image-list {
+    width: 120px;
+    aspect-ratio: 3/2;
+    background: var(--muted);
+    overflow: hidden;
+    border-radius: 6px;
+    flex-shrink: 0;
+    grid-column: 3;
+    position: relative;
+}
+
+/* When no post number, image takes second column */
+.post-card-list:not(:has(.post-number)) .post-image-list {
+    grid-column: 2;
+}
+
+.post-image-list img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.post-image-list .featured-badge {
+    display: none;
+}
+
+/* List-specific content styling */
+.post-card-list .post-meta {
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-card-list .post-meta .authors {
+    color: var(--text-secondary);
+}
+
+.draft-indicator {
+    background: var(--warning);
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.125rem 0.4rem;
+    border-radius: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.post-card-list .post-title {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.3;
+}
+
+.post-card-list .post-description {
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    margin: 0 0 0.75rem 0;
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.post-card-list .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    margin: 0;
+}
+
+.post-card-list .tag {
+    background: var(--muted);
+    color: var(--text-secondary);
+    font-size: 0.65rem;
+    padding: 0.125rem 0.4rem;
+    border-radius: 2px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* Link styling for list cards */
+.post-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Mobile responsive adjustments - Fixed Layout */
+@media (max-width: 640px) {
+    .post-card-list {
+        display: grid;
+        grid-template-columns: 60px 1fr;
+        grid-template-rows: auto auto;
+        gap: 1rem;
+        align-items: start;
+    }
+    
+    /* Image spans both columns at top */
+    .post-image-list {
+        grid-column: 1 / -1;
+        grid-row: 1;
+        width: 100%;
+        aspect-ratio: 16/9;
+        border-radius: 6px;
+    }
+    
+    /* Post number in bottom left */
+    .post-number {
+        grid-column: 1;
+        grid-row: 2;
+        width: 40px;
+        height: auto;
+        min-height: 60px;
+        justify-self: start;
+        align-self: start;
+        border-right: 1px solid var(--border);
+        border-bottom: none;
+        padding-right: 1rem;
+    }
+    
+    /* Content next to post number */
+    .post-content-list {
+        grid-column: 2;
+        grid-row: 2;
+        padding: 0;
+        min-width: 0;
+    }
+    
+    /* When no post number on mobile - single column for content */
+    .post-card-list:not(:has(.post-number)) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .post-card-list:not(:has(.post-number)) .post-content-list {
+        grid-column: 1;
+        grid-row: 2;
+    }
+    
+    .post-card-list:not(:has(.post-number)) .post-image-list {
+        grid-column: 1;
+        grid-row: 1;
+    }
+    
+    /* Featured tag positioning on mobile */
+    .post-card-list.featured::before {
+        position: absolute;
+        top: calc(((100vw - 2rem) * 9 / 16) + 1.5rem); /* Image height + gap */
+        left: 0;
+        z-index: 1;
+    }
+    
+    /* When there's a post number on mobile, move featured tag */
+    .post-card-list.featured:has(.post-number)::before {
+        left: calc(60px + 1rem);
+        top: calc(((100vw - 2rem) * 9 / 16) + 1.5rem);
+    }
+    
+    .post-card-list.featured .post-meta {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {    
+    /* Adjust for smaller screens */
+    .post-card-list.featured::before {
+        top: calc(((100vw - 2rem) * 9 / 16) + 1.5rem);
+    }
+    
+    .post-card-list.featured:has(.post-number)::before {
+        top: calc(((100vw - 2rem) * 9 / 16) + 1.5rem);
+    }
+}

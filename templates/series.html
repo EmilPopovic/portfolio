@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "partial/meta.html" %}
+    <title>{{ series.title }} | Blog Series</title>
+  </head>
+  <body>
+    <main class="main-wrapper">
+      <a href="/blog" class="back-link">← Back to Blog</a>
+      <div class="series-header">
+        {% if series.cover_image %}
+          <div class="series-cover">
+            <img src="{{ url_for('static', path='images/series/' + series.cover_image) }}" 
+                 alt="{{ series.title }}" loading="lazy">
+          </div>
+        {% endif %}
+        
+        <div class="series-info">
+          <div class="series-meta">
+            <time datetime="{{ series.created.isoformat() }}">
+              {{ series.created.strftime('%B %d, %Y') }}
+            </time>
+            {% if series.authors %}
+              <span class="authors">
+                by 
+                {% for author in series.authors %}
+                  <span class="author">{{ author.name }}</span>{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </span>
+            {% endif %}
+            <span class="status-badge status-{{ series.status }}">{{ series.status }}</span>
+          </div>
+          
+          <h1 class="series-title">{{ series.title }}</h1>
+          <p class="series-description">{{ series.description }}</p>
+          
+          <div class="series-stats">
+            <span class="post-count">{{ posts|length }} post{{ 's' if posts|length != 1 else '' }}</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="series-posts">
+        <h2>Posts in this series</h2>
+        <div class="posts-list">
+          {% for post in posts %}
+            {% set series_context = series %}
+            {% set post_number = loop.index %}
+            {% include 'partial/post_card.html' %}
+          {% endfor %}
+        </div>
+        
+        {% if posts|length == 0 %}
+          <p class="no-posts">No posts in this series yet.</p>
+        {% endif %}
+      </div>
+      
+      {% include "partial/theme_switch.html" %}
+    </main>
+  </body>
+</html>

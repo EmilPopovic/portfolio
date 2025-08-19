@@ -1,0 +1,24 @@
+name: portfolio
+
+services:
+  api:
+    container_name: api
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8027:8027"
+    networks:
+      - portfolio
+      - proxy-network
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  portfolio:
+  proxy-network:
+    external: true

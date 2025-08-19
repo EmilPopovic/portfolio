@@ -1,0 +1,114 @@
+{% from "partial/icon.html" import icon %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "partial/meta.html" %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/blog.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/series_card.css') }}">
+    <title>Blog</title>
+  </head>
+  <body>
+    <main class="main-wrapper">
+      <a href="/" class="back-link">{{ icon("arrow_back", size="16") }}Back to Home</a>
+      
+      <div class="blog-header">
+        <h1 class="blog-title">Blog</h1>
+        <p class="blog-description">Thoughts, projects, and learnings</p>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="blog-controls">
+        <form method="get" class="search-form">
+          <div class="search-group">
+            <input 
+              type="text" 
+              name="search" 
+              placeholder="Search posts..." 
+              value="{{ current_search or '' }}"
+              class="search-input"
+            >
+            <select name="tag" class="tag-filter">
+              <option value="">All tags</option>
+              {% for tag in all_tags %}
+                <option value="{{ tag }}" {% if current_tag == tag %}selected{% endif %}>
+                  {{ tag }}
+                </option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="search-button">Search</button>
+          </div>
+          {% if current_search or current_tag %}
+            <a href="/blog" class="clear-filters">Clear filters</a>
+          {% endif %}
+        </form>
+      </div>
+
+      {% if current_search or current_tag %}
+        <div class="filter-summary">
+          <p>
+            {% if current_search and current_tag %}
+              Showing results for "<strong>{{ current_search }}</strong>" with tag "<strong>{{ current_tag }}</strong>"
+            {% elif current_search %}
+              Showing results for "<strong>{{ current_search }}</strong>"
+            {% elif current_tag %}
+              Showing posts tagged "<strong>{{ current_tag }}</strong>"
+            {% endif %}
+            ({{ posts|length }} post{{ 's' if posts|length != 1 else '' }})
+          </p>
+        </div>
+      {% endif %}
+
+      <!-- Featured Posts Section -->
+      {% if featured_posts and not (current_search or current_tag) %}
+        <section class="featured-section">
+          <h2 class="section-title">Featured Posts</h2>
+          <div class="featured-grid">
+            {% for post in featured_posts %}
+              {% include 'partial/post_card.html' %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- Series Section -->
+      {% if series and not (current_search or current_tag) %}
+        <section class="series-section">
+          <h2 class="section-title">Series</h2>
+          <div class="series-grid">
+            {% for series in series %}
+              {% include 'partial/series_card.html' %}
+            {% endfor %}
+          </div>
+        </section>
+      {% endif %}
+
+      <!-- All Posts Section -->
+      <section class="posts-section">
+        <h2 class="section-title">
+          {% if current_search or current_tag %}
+            Search Results
+          {% else %}
+            All Posts
+          {% endif %}
+        </h2>
+        
+        {% if posts %}
+          <div class="posts-list">
+            {% for post in posts %}
+              {% include 'partial/post_card.html' %}
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="no-results">
+            <p>No posts found.</p>
+            {% if current_search or current_tag %}
+              <a href="/blog" class="clear-filters">View all posts</a>
+            {% endif %}
+          </div>
+        {% endif %}
+      </section>
+
+      {% include "partial/theme_switch.html" %}
+    </main>
+  </body>
+</html>
