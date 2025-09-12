@@ -2,7 +2,7 @@ name: portfolio
 
 services:
   api:
-    container_name: portfolio_api
+    container_name: portfolio
     build:
       context: .
       dockerfile: ./Dockerfile

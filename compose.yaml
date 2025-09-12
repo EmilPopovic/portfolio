@@ -2,10 +2,8 @@ name: portfolio
 
 services:
   api:
-    container_name: portfolio_api
-    build:
-      context: .
-      dockerfile: ./Dockerfile
+    container_name: portfolio
+    image: ghcr.io/EmilPopovic/portfolio:latest
     ports:
       - 8027:8027
     env_file:
@@ -16,3 +14,11 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+
+  watchtower:
+    container_name: portfolio_watchtower
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --interval 30 --cleanup portfolio
+    restart: always
