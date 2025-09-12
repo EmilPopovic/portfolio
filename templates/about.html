@@ -1,0 +1,16 @@
+{% from "partial/icon.html" import icon %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% include "partial/meta.html" %}
+  </head>
+  <body>
+    <main class="main-wrapper">
+      <a href="/" class="back-link">{{ icon("arrow_back", size="16") }}Back to Home</a>
+      <div class="post-body">
+        {{ about | safe }}
+      </div>
+      {% include "partial/theme_switch.html" %}
+    </main>
+  </body>
+</html>

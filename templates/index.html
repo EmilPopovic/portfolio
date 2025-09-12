@@ -1,13 +1,32 @@
+{% from "partial/icon.html" import icon %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     {% include "partial/meta.html" %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/hero.css') }}">
   </head>
   <body>
     <main class="main-wrapper">
-        {% include "partial/header.html" %}
-        {% include "partial/latest_posts.html" %}
-        {% include "partial/theme_switch.html" %}
+      <div class="hero-container">
+        {{ hero | safe }}
+        <div class="main-links-container">
+          <!-- About card -->
+          <a class="main-link-card" id="about-card" href="/about">
+            About
+            <span>{{ icon("arrow_forward", size="24") }}</span>
+          </a>
+          <!-- Blog card -->
+          <a class="main-link-card" id="blog-card" href="/blog">
+            Blog {{ icon("arrow_forward", size="24") }}
+          </a>
+          <!-- Contact card -->
+          <a class="main-link-card" id="contact-card" href="/contact">
+            Contact {{ icon("arrow_forward", size="24") }}
+          </a>
+        </div>
+      </div>
+      {% include "partial/latest_posts.html" %}
+      {% include "partial/theme_switch.html" %}
     </main>
   </body>
 </html>

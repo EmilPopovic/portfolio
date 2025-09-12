@@ -1,0 +1,32 @@
+.hero-container {
+    line-height: 1;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+
+.hero-container h3 {
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.hero-container h1 {
+    font-size: 7rem;
+    margin: auto auto;
+}
+
+.hero-container h2 {
+    line-height: 1.6;
+}
+
+.hero-container p {
+    line-height: 1.6;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 550px) {
+    .hero-container h1 {
+        font-size: 4rem;
+    }
+}

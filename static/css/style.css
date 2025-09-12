@@ -71,6 +71,10 @@ body {
     padding: 0;
 }
 
+hr {
+    color: var(--border);
+}
+
 main.main-wrapper {
     max-width: 650px;
     margin: 0 auto;
@@ -152,7 +156,7 @@ main.main-wrapper {
 
 /* For individual post view, remove padding */
 .post-article .post-content {
-    padding: 2rem 0 0 0;
+    padding: 1rem 0 0 0;
 }
 
 .post-meta {
@@ -348,6 +352,15 @@ main.main-wrapper {
     font-style: italic;
 }
 
+.post-body a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+.post-body a:hover {
+    text-decoration: underline;
+}
+
 /* Series Context and Selection */
 .series-context,
 .series-selection {
@@ -377,7 +390,9 @@ main.main-wrapper {
 }
 
 .back-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
     margin-bottom: 1rem;
     font-size: 0.875rem;
     color: var(--link);
@@ -420,4 +435,45 @@ main.main-wrapper {
 .no-results p {
     margin: 0 0 1rem 0;
     font-size: 1.125rem;
+}
+
+/* Main Links (on home page) */
+.main-links-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+}
+
+@media (max-width: 520px) {
+    .main-links-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.main-link-card {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.main-link-card:hover {
+    cursor: pointer;
+}
+
+.main-link-card span {
+    margin: 0;
+    transition: transform 0.2s ease;
+}
+
+.main-link-card:hover span {
+    transform: translateX(4px);
 }

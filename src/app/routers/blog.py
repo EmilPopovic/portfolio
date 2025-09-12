@@ -132,7 +132,7 @@ async def post_in_series(
             'series_list': series_list,
             'current_series': series,
             'navigation': navigation,
-            'title': post.title
+            'title': f'{post.title} | {series.title}'
         },
         request
     )

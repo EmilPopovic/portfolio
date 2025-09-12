@@ -2,11 +2,9 @@ slug: project-summaries
 title: "Project Summaries"
 description: "The things I have been working on"
 authors: ["Emil Popović"]
-created: "2025-08-17"
+created: "2025-09-12"
 status: "in-progress"
-#cover_image: "cover.jpg"
+cover_image: ""
 posts:
   - slug: "my-blog"
     order: 1
-  - slug: "another-post"
-    order: 2

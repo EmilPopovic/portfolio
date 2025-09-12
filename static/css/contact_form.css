@@ -1,0 +1,115 @@
+.contact-form {
+    margin: 0;
+    width: 100%
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea,
+.contact-form button {
+    box-sizing: border-box;
+}
+
+.contact-form fieldset {
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+.contact-form label {
+    display: block;
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    margin-top: 1.5rem;
+}
+
+.contact-form label:first-of-type {
+    margin-top: 0;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    line-height: 1.5;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--focus-ring);
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form select {
+    cursor: pointer;
+}
+
+.contact-form button {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: 10px;
+    padding: 0.875rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.contact-form button:hover {
+    background-color: var(--link-hover);
+}
+
+/* Required field indicators */
+.contact-form span[aria-hidden] {
+    color: var(--danger);
+    margin-left: 0.25rem;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .contact-form button {
+        width: 100%;
+    }
+}
+
+.message {
+    padding: 1rem;
+    border-radius: 4px;
+    margin: 1.5rem 0;
+    font-weight: 500;
+}
+
+.success-message {
+    background-color: rgba(40, 167, 69, 0.1);
+    color: var(--success);
+    border: 1px solid var(--success);
+}
+
+.error-message {
+    background-color: rgba(220, 53, 69, 0.1);
+    color: var(--danger);
+    border: 1px solid var(--danger);
+}
+
+.success-message p,
+.error-message p {
+    margin: 0;
+}

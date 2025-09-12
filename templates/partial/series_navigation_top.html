@@ -1,0 +1,33 @@
+{% from "partial/icon.html" import icon %}
+
+<nav class="series-navigation top">
+  <div class="nav-container">
+    {% if navigation.prev %}
+      <a href="/blog/s/{{ current_series.slug }}/p/{{ navigation.prev.slug }}" class="nav-link prev">
+        <span class="nav-direction">{{ icon("arrow_back", size="16") }}</span>
+      </a>
+    {% else %}
+      <div class="nav-link disabled">
+        <span class="nav-direction">
+          {{ icon("arrow_back", size="16") }}
+        </span>
+      </div>
+    {% endif %}
+    
+    <div class="nav-center">
+      <a href="/blog/s/{{ current_series.slug }}" class="series-title">{{ current_series.title }}</a>
+    </div>
+    
+    {% if navigation.next %}
+      <a href="/blog/s/{{ current_series.slug }}/p/{{ navigation.next.slug }}" class="nav-link next">
+        <span class="nav-direction">{{ icon("arrow_forward", size="16") }}</span>
+      </a>
+    {% else %}
+      <div class="nav-link next disabled">
+        <span class="nav-direction">
+          {{ icon("arrow_forward", size="16") }}
+        </span>
+      </div>
+    {% endif %}
+  </div>
+</nav>

@@ -13,7 +13,7 @@
       
       <!-- Series Navigation Top -->
       {% if current_series and navigation %}
-        {% include "partial/series_navigation.html" %}
+        {% include "partial/series_navigation_top.html" %}
       {% endif %}
       
       <article class="post-article{% if post.featured %} featured{% endif %}">
@@ -45,7 +45,8 @@
           {% if current_series %}
             <div class="series-context">
               <strong>Part {{ navigation.current_index }} of {{ navigation.total }}</strong> in 
-              <a href="/blog/s/{{ current_series.slug }}">{{ current_series.title }}</a>
+              <a href="/blog/s/{{ current_series.slug }}">{{ current_series.title }}</a>.
+              <span class="or-standalone">Read <a href="/blog/p/{{ post.slug }}">standalone</a></span>
             </div>
           {% endif %}
           
@@ -88,7 +89,7 @@
       
       <!-- Series Navigation Bottom -->
       {% if current_series and navigation %}
-        {% include "partial/series_navigation.html" %}
+        {% include "partial/series_navigation_bottom.html" %}
       {% endif %}
       
       {% include "partial/theme_switch.html" %}

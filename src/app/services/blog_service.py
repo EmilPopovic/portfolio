@@ -3,7 +3,7 @@ import os
 import yaml
 from datetime import date
 from ..models import Author, Post, Series
-from markdown import markdown
+import markdown
 
 logger = logging.getLogger(__name__)
 
@@ -25,7 +25,20 @@ def parse_frontmatter(md_path):
 
 class BlogService:
     def __init__(self):
-        pass
+        self._posts: list[Post] | None = None
+        self._series: list[Series] | None = None
+        self._md = markdown.Markdown(extensions=[
+            'codehilite',
+            'fenced_code', 
+            'tables',
+            'toc'
+        ], extension_configs={
+            'codehilite': {
+                'css_class': 'highlight',
+                'use_pygments': True,
+                'noclasses': False
+            }
+        })
 
     def get_post(self, slug: str) -> Post | None:
         for post in self.posts:
@@ -33,14 +46,20 @@ class BlogService:
                 return post
         return None
     
-    def get_series(self, slug: str) -> Series | None:
+    def get_series(self, slug: str, include_drafts: bool = False) -> Series | None:
         for series in self.series:
             if series.slug == slug:
+                if not include_drafts:
+                    posts = [post for post in series.posts if not post.draft]
+                    series.posts = posts
                 return series
         return None
     
     @property
     def posts(self) -> list[Post]:
+        if self._posts is not None:
+            return self._posts
+
         posts_list = []
         for fname in os.listdir(POSTS_DIR):
             if not fname.endswith('.md'):
@@ -63,10 +82,15 @@ class BlogService:
                 cover_image=meta.get('cover_image', ''),
                 attachments=meta.get('attachments', [])
             ))
+
+        self._posts = posts_list[:]
         return posts_list
     
     @property
     def series(self) -> list[Series]:
+        if self._series is not None:
+            return self._series
+
         series_list = []
         for fname in os.listdir(SERIES_DIR):
             if not fname.endswith('.yaml'):
@@ -97,6 +121,8 @@ class BlogService:
                 cover_image=meta.get('cover_image', ''),
                 posts=posts
             ))
+
+        self._series = series_list[:]
         return series_list
     
     def get_series_of_post(self, post_slug: str) -> list[Series]:
@@ -141,4 +167,4 @@ class BlogService:
     def render_post_body(self, post: Post) -> str:
         post_path = os.path.join(POSTS_DIR, post.file)
         _, body = parse_frontmatter(post_path)
-        return markdown(body, extensions=['fenced_code', 'codehilite', 'tables'])
+        return self._md.convert(body)

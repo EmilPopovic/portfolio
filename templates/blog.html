@@ -5,16 +5,10 @@
     {% include "partial/meta.html" %}
     <link rel="stylesheet" href="{{ url_for('static', path='css/blog.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', path='css/series_card.css') }}">
-    <title>Blog</title>
   </head>
   <body>
     <main class="main-wrapper">
       <a href="/" class="back-link">{{ icon("arrow_back", size="16") }}Back to Home</a>
-      
-      <div class="blog-header">
-        <h1 class="blog-title">Blog</h1>
-        <p class="blog-description">Thoughts, projects, and learnings</p>
-      </div>
 
       <!-- Search and Filter -->
       <div class="blog-controls">
