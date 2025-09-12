@@ -3,7 +3,7 @@ name: portfolio
 services:
   api:
     container_name: portfolio
-    image: ghcr.io/EmilPopovic/portfolio:latest
+    image: ghcr.io/emilpopovic/portfolio:latest
     ports:
       - 8027:8027
     env_file:
