@@ -6,7 +6,10 @@ COPY ./requirements.txt /app/requirements.txt
 
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY . /app
+COPY content /app/content
+COPY src /app/src
+COPY static /app/static
+COPY templates /app/templates
 
 EXPOSE 8027
 

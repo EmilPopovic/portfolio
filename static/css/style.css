@@ -72,7 +72,10 @@ body {
 }
 
 hr {
-    color: var(--border);
+    border: none;
+    height: 1px;
+    background: var(--border);
+    color: none;
 }
 
 main.main-wrapper {

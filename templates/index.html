@@ -25,6 +25,17 @@
           </a>
         </div>
       </div>
+
+      <!-- Projects series -->
+      {% if project_summaries %}
+        <div class="container">
+          <h2>Check Out My Projects</h2>
+          {% set series = project_summaries %}
+          {% include 'partial/series_card.html' %}
+        </div>
+        <hr>
+      {% endif %}
+
       {% include "partial/latest_posts.html" %}
       {% include "partial/theme_switch.html" %}
     </main>

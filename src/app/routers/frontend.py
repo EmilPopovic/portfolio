@@ -23,11 +23,13 @@ async def serve_frontend(
     hero_html = markdown(hero_md_content, extensions=['fenced_code', 'codehilite', 'tables'])
 
     latest_posts = blog_service.get_latest_posts(limit=3, include_drafts=False)
+    project_summaries = blog_service.get_series('project-summaries')
     context = {
         'request': request,
         'title': 'Emil\'s Site',
         'hero': hero_html,
-        'latest_posts': latest_posts
+        'latest_posts': latest_posts,
+        'project_summaries': project_summaries
     }
     return template_service.render_index(context, request)
 
