@@ -3,7 +3,14 @@ import logging
 from fastapi import APIRouter, Depends, Request, Form
 from fastapi.responses import FileResponse, HTMLResponse
 from markdown import markdown
-from ..dependencies import TemplateService, get_template_service, BlogService, get_blog_service, EmailService, get_email_service
+from ..dependencies import (
+    TemplateService,
+    get_template_service,
+    BlogService,
+    get_blog_service,
+    EmailService,
+    get_email_service,
+)
 
 logger = logging.getLogger(__name__)
 router = APIRouter(tags=['frontend'])

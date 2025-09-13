@@ -10,7 +10,7 @@ async def health():
     return {
         'status': 'healthy',
         'timestamp': datetime.now(timezone.utc).isoformat(),
-        'service': 'portfolio-api'
+        'service': 'portfolio'
     }
 
 @router.get('/health/ready')
