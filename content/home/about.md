@@ -2,7 +2,7 @@
 
 Hi! I am Emil, currently a computing student at [FER](https://www.fer.unizg.hr/en/studies/bachelor/computing) interested in **HPC**, **RISC-V** processors, **LLMs**, **backend** development and **privacy-focused technology**. I work with everything from RISC-V architecture to modern authentication methods.
 
-> I like using tech and programming to solve real-world problems (however small, silly, or niche they may be). For instance, I built
+> I like using tech and programming to solve real-world problems (however small, silly, or niche they may be). For instance, after getting annoyed at the fact that my university does not send the students an email when their timetable changes, I built a web app that monitors calendars and notifies studnets of any changes - and let everyone use it.
 
 ---
 

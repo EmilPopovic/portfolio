@@ -51,15 +51,27 @@ document.getElementById('theme-switch-btn').onclick = () => {
 
 // Load preferred theme on page load
 window.addEventListener('DOMContentLoaded', () => {
-    const saved = localStorage.getItem('theme') || 'light';
-    document.documentElement.setAttribute('data-theme', saved);
+    let theme;
     
-    // Set initial icon visibility based on saved theme
-    document.getElementById('dark-icon').style.display = saved === 'dark' ? 'none' : 'block';
-    document.getElementById('light-icon').style.display = saved === 'dark' ? 'block' : 'none';
+    // First try localStorage
+    const savedTheme = localStorage.getItem('theme');
     
-    // Set initial syntax highlighting based on saved theme
-    document.getElementById('syntax-light').disabled = saved === 'dark';
-    document.getElementById('syntax-dark').disabled = saved !== 'dark';
+    if (savedTheme) {
+        theme = savedTheme;
+    } else {
+        // Fall back to browser preference
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        theme = prefersDark ? 'dark' : 'light';
+    }
+    
+    document.documentElement.setAttribute('data-theme', theme);
+    
+    // Set initial icon visibility based on theme
+    document.getElementById('dark-icon').style.display = theme === 'dark' ? 'none' : 'block';
+    document.getElementById('light-icon').style.display = theme === 'dark' ? 'block' : 'none';
+    
+    // Set initial syntax highlighting based on theme
+    document.getElementById('syntax-light').disabled = theme === 'dark';
+    document.getElementById('syntax-dark').disabled = theme !== 'dark';
 });
 </script>
